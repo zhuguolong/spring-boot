@@ -21,12 +21,12 @@ public class FileUploadController {
 
     private final static Logger log = LoggerFactory.getLogger(FileUploadController.class);
 
-    private static String UPLOADED_FOLDER = "/usr/local/resource/www/picture/";
+    private final static String UPLOADED_FOLDER = "/usr/local/resource/www/picture/";
 
     @PostMapping(value = "/fileUpload")
     public Object fileUpload(MultipartFile file) {
         if (file.isEmpty()) {
-            return "Please select a file to upload!";
+            return ResultMap.err("Please select a file to upload!");
         }
 
         try {
