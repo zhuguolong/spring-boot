@@ -22,6 +22,9 @@ public class SortController {
         if("bubbleSort".equals(sortType)) {
             return ResultMap.ok(iArraySort.bubbleSort(sourceArr), "冒泡排序成功！");
         }
+        if("insertSort".equals(sortType)) {
+            return ResultMap.ok(iArraySort.InsertSort(sourceArr), "插入排序成功！");
+        }
         return ResultMap.err("无该排序算法！");
     }
 }
