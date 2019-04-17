@@ -9,5 +9,5 @@ package com.zhu.springboot.utils.sort;
 public enum SortType {
     SELECTION,
     BUBBLE,
-    INSERT;
+    INSERT,
 }
