@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author zhugu
@@ -16,11 +16,10 @@ import java.util.Map;
  */
 @Component
 public class SortFactory implements ApplicationContextAware {
-    private static Map<SortType, Sort> sortBeanMap;
+    private static Map<SortType, Sort> sortBeanMap = new ConcurrentHashMap<>(16);
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         Map<String, Sort> map = applicationContext.getBeansOfType(Sort.class);
-        sortBeanMap = new HashMap<>(16);
         map.forEach((key, value) -> sortBeanMap.put(value.getSortType(), value));
     }
 
