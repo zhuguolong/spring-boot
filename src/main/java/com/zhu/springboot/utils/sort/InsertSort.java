@@ -1,6 +1,6 @@
 package com.zhu.springboot.utils.sort;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
@@ -9,8 +9,13 @@ import java.util.Arrays;
  * @version 1.0
  * @Date 2019/4/17 14:17
  */
-@Service("insertSort")
+@Component
 public class InsertSort implements Sort {
+    @Override
+    public SortType getSortType() {
+        return SortType.INSERT;
+    }
+
     /**
      * 插入排序
      * 1、将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。
@@ -18,7 +23,7 @@ public class InsertSort implements Sort {
      * 2、从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
      */
     @Override
-    public int[] sort(int[] sourceArray) {
+    public int[] sorting(int[] sourceArray) {
         // 7, 2, 4, 6, 3, 9, 1
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 

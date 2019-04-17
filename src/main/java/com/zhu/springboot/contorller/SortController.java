@@ -1,42 +1,21 @@
 package com.zhu.springboot.contorller;
 
-import com.zhu.springboot.utils.ResultMap;
-import com.zhu.springboot.utils.sort.Sort;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.zhu.springboot.utils.sort.SortFactory;
+import com.zhu.springboot.utils.sort.SortType;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SortController {
 
-    @Qualifier("bubbleSort")
-    private final Sort bubbleSort;
+    private final SortFactory sortFactory;
 
-    @Qualifier("selectionSort")
-    private final Sort selectionSort;
-
-    @Qualifier("insertSort")
-    private final Sort insertSort;
-
-    public SortController(Sort bubbleSort,
-                          Sort selectionSort,
-                          Sort insertSort) {
-        this.bubbleSort = bubbleSort;
-        this.selectionSort = selectionSort;
-        this.insertSort = insertSort;
+    public SortController(SortFactory sortFactory) {
+        this.sortFactory = sortFactory;
     }
 
-    @GetMapping(value = "/sort")
-    public Object sort(String sortType, int[] sourceArr) {
-        if ("selectionSort".equals(sortType)) {
-            return ResultMap.ok(selectionSort.sort(sourceArr), "选择排序成功！");
-        }
-        if("bubbleSort".equals(sortType)) {
-            return ResultMap.ok(bubbleSort.sort(sourceArr), "冒泡排序成功！");
-        }
-        if("insertSort".equals(sortType)) {
-            return ResultMap.ok(insertSort.sort(sourceArr), "插入排序成功！");
-        }
-        return ResultMap.err("无该排序算法！");
+    @PostMapping(value = "factory/sort")
+    public Object sortFactory(SortType sortType, int[] sourceArr) {
+        return sortFactory.sorting(sortType, sourceArr);
     }
 }

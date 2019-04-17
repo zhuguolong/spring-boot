@@ -1,6 +1,6 @@
 package com.zhu.springboot.utils.sort;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
@@ -9,8 +9,13 @@ import java.util.Arrays;
  * @version 1.0
  * @Date 2019/4/17 14:16
  */
-@Service("selectionSort")
+@Component
 public class SelectionSort implements Sort {
+    @Override
+    public SortType getSortType() {
+        return SortType.SELECTION;
+    }
+
     /**
      * 选择排序：
      * 1、首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置
@@ -20,7 +25,7 @@ public class SelectionSort implements Sort {
      * 3、重复第二步，直到所有元素均排序完毕。
      */
     @Override
-    public int[] sort(int[] sourceArray) {
+    public int[] sorting(int[] sourceArray) {
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
         // 总共要经过 N-1 轮比较

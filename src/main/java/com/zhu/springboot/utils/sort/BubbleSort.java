@@ -1,6 +1,6 @@
 package com.zhu.springboot.utils.sort;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
@@ -9,8 +9,13 @@ import java.util.Arrays;
  * @version 1.0
  * @Date 2019/4/17 14:15
  */
-@Service("bubbleSort")
+@Component
 public class BubbleSort implements Sort {
+    @Override
+    public SortType getSortType() {
+        return SortType.BUBBLE;
+    }
+
     /**
      * 冒泡排序：
      * 1、比较相邻的元素。如果第一个比第二个大，就交换他们两个。
@@ -22,7 +27,7 @@ public class BubbleSort implements Sort {
      * 4、持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
      */
     @Override
-    public int[] sort(int[] sourceArray) {
+    public int[] sorting(int[] sourceArray) {
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
         for (int i = 0; i < arr.length; i++) {

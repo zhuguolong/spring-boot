@@ -6,5 +6,6 @@ package com.zhu.springboot.utils.sort;
  * @Date 2019/4/17 14:15
  */
 public interface Sort {
-    int[] sort(int[] sourceArray);
+    SortType getSortType();
+    int[] sorting(int[] sourceArray);
 }
