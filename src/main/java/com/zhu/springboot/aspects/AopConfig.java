@@ -13,11 +13,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class AopConfig {
     @Bean
-    public AopConfig injectAopConfig() {
-        return new AopConfig();
-    }
-
-    @Bean
     public LogAspects injectLogAspects() {
         return new LogAspects();
     }
