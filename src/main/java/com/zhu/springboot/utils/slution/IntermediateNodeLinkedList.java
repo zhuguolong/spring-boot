@@ -20,7 +20,7 @@ public class IntermediateNodeLinkedList {
      */
     public static Object fastSlowPointer(List<Object> originList) {
         if (originList.size() <= 0) {
-            throw new IllegalArgumentException("list is size illegal");
+            throw new IllegalArgumentException("list size illegal");
         }
 
         int fastPointer = 0;
