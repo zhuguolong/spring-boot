@@ -27,7 +27,11 @@ public class ExecutorsUtils {
      * @param keepAliveTime 空闲的非核心线程存活时间
      * @param unit 非核心线程空闲存活时间单位
      * @param workQueue 存放任务的阻塞队列
-     * @param handler 线城池的饱和策略事件，主要有四种类型
+     * @param handler 线城池的饱和策略事件，主要有四种类型：
+     * AbortPolicy(抛出一个异常，默认的)
+     * DiscardPolicy(直接丢弃任务)
+     * DiscardOldestPolicy（丢弃队列里最老的任务，将当前这个任务继续提交给线程池）
+     * CallerRunsPolicy（交给线程池调用所在的线程进行处理)
      */
     private static ThreadPoolExecutor service = new ThreadPoolExecutor(MIN_THREAD_NUM,
             MAN_THREAD_NUM,
