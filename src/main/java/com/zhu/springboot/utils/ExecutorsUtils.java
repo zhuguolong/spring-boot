@@ -17,9 +17,9 @@ import java.util.concurrent.*;
  */
 public class ExecutorsUtils {
     // 核心线程数
-    private static final Integer MIN_THREAD_NUM = 5;
+    private static final Integer CORE_POOL_SIZE = 5;
     // 非核心线程数
-    private static final Integer MAN_THREAD_NUM = 40;
+    private static final Integer MAX_IMUM_POOL_SIZE = 40;
 
     /**
      * @param corePoolSize 核心线程数
@@ -33,8 +33,8 @@ public class ExecutorsUtils {
      * DiscardOldestPolicy（丢弃队列里最老的任务，将当前这个任务继续提交给线程池）
      * CallerRunsPolicy（交给线程池调用所在的线程进行处理)
      */
-    private static ThreadPoolExecutor service = new ThreadPoolExecutor(MIN_THREAD_NUM,
-            MAN_THREAD_NUM,
+    private static ThreadPoolExecutor service = new ThreadPoolExecutor(CORE_POOL_SIZE,
+            MAX_IMUM_POOL_SIZE,
             5,
             TimeUnit.SECONDS,
             new SynchronousQueue<>(), new ThreadPoolExecutor.CallerRunsPolicy() {
